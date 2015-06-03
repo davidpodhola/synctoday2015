@@ -1,0 +1,1 @@
+git tfs clone https://synctoday.visualstudio.com/DefaultCollection $/Sync.Today/Main/2015
