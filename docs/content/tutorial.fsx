@@ -10,8 +10,8 @@ Introducing your project
 Say more
 
 *)
-#r "FSharp.ProjectScaffold.dll"
-open FSharp.ProjectScaffold
+#r "Sync.Today.dll"
+open Sync.Today
 
 Library.hello 0
 (**

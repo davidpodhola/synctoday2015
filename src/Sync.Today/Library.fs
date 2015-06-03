@@ -1,4 +1,4 @@
-﻿namespace FSharp.ProjectTemplate
+namespace Sync.Today
 
 /// Documentation for my library
 ///

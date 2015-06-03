@@ -1,0 +1,23 @@
+type project
+owners
+    Author not set
+authors 
+    Author not set
+projectUrl
+    http://github.com/SyncToday/Sync.Today
+iconUrl
+    https://raw.githubusercontent.com/SyncToday/Sync.Today/master/docs/files/img/logo.png
+licenseUrl
+    http://github.com/SyncToday/Sync.Today/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+copyright
+    Copyright 2015
+tags
+    Sync.Today is like an Instagram filter to your business data. It can enhance the information you already have in your information systems to bring you the greatest benefits.
+summary
+    Sync.Today is a business processes automation platform. It is an application integration server. Exchanging business documents among different systems both within or across organizational boundaries Sync.Today integrates business processes.
+description
+    Sync.Today is a business processes automation platform. It is an application integration server. Exchanging business documents among different systems both within or across organizational boundaries Sync.Today integrates business processes.
+
+
