@@ -39,6 +39,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sync.Today.Core", "src\Sync
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sync.Today.Models", "src\Sync.Today.Models\Sync.Today.Models.fsproj", "{FA6FAAEA-07F3-4FFF-8F73-A758CA4F0510}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sync.Today.Repository", "src\Sync.Today.Repository\Sync.Today.Repository.fsproj", "{F743D309-BE81-4469-A587-6D31B990DD99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{FA6FAAEA-07F3-4FFF-8F73-A758CA4F0510}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA6FAAEA-07F3-4FFF-8F73-A758CA4F0510}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA6FAAEA-07F3-4FFF-8F73-A758CA4F0510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F743D309-BE81-4469-A587-6D31B990DD99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F743D309-BE81-4469-A587-6D31B990DD99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F743D309-BE81-4469-A587-6D31B990DD99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F743D309-BE81-4469-A587-6D31B990DD99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
