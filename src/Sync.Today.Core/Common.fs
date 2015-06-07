@@ -58,8 +58,10 @@ let string2optionString( s : string ) : string option =
     | null -> None
     | some -> Some(some)
 
+/// 
 type IEqualityComparer<'T> = Generic.IEqualityComparer<'T>
 
+/// Equals using function f
 let equalIf f (x:'T) (y:obj) =
   if obj.ReferenceEquals(x, y) then true
   else
@@ -68,33 +70,40 @@ let equalIf f (x:'T) (y:obj) =
     | _, (:? 'T as y) -> f x y
     | _ -> false
 
+/// Equal by comporer 
 let equalByWithComparer (comparer:IEqualityComparer<_>) f (x:'T) (y:obj) = 
   (x, y) ||> equalIf (fun x y -> comparer.Equals(f x, f y))
 
+/// Equal by projection
 let equalByProjection proj (comparer:IEqualityComparer<_>) f (x:'T) (y:obj) = 
   (x, y) ||> equalIf (fun x y -> 
     Seq.zip (proj x) (proj y)
     |> Seq.forall obj.Equals && comparer.Equals(f x, f y))
 
+/// Equal by string 
 let equalByString f (x:'T) (y:obj) = 
   (x, y) ||> equalIf (fun x y -> StringComparer.InvariantCulture.Equals(f x, f y))
 
+/// apply convert to an option or return None for None
 let convertOption(a, convert) =
     match a with
     | Some r -> Some(convert(r))
     | None -> None
 
+/// return true if both strings are null/empty or have the same content
 let stringsAreEqual a b =
     if String.IsNullOrEmpty a then
         String.IsNullOrEmpty b 
     else
         String.Equals( a, b )
 
+/// Return true if two 
 let optionstringsAreEqual a b =
     let a_s = optionString2String a
     let b_s = optionString2String b
     stringsAreEqual a_s b_s
 
+/// Return true if string option is None or the content is Null or empty
 let optionstringIsEmpty a =
     match a with
     | Some r -> String.IsNullOrEmpty( r )
