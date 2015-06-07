@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Tests.fs" />
     <None Include="paket.references" />
+    <Compile Include="TestIoC.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -70,6 +71,16 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Sync.Today.Core\Sync.Today.Core.fsproj">
+      <Name>Sync.Today.Core</Name>
+      <Project>{cb572253-9fe0-4a65-92ea-c992e5abf07b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Sync.Today.Models\Sync.Today.Models.fsproj">
+      <Name>Sync.Today.Models</Name>
+      <Project>{fa6faaea-07f3-4fff-8f73-a758ca4f0510}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Sync.Today\Sync.Today.fsproj">
       <Name>Sync.Today</Name>
       <Project>{baf2cd5a-2d48-4b5c-9935-2586c92ba49b}</Project>
