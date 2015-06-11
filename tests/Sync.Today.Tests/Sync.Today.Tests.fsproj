@@ -56,6 +56,37 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <ItemGroup>
+    <Compile Include="Tests.fs" />
+    <None Include="paket.references" />
+    <Compile Include="TestIoC.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Sync.Today.Core\Sync.Today.Core.fsproj">
+      <Name>Sync.Today.Core</Name>
+      <Project>{cb572253-9fe0-4a65-92ea-c992e5abf07b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Sync.Today.Models\Sync.Today.Models.fsproj">
+      <Name>Sync.Today.Models</Name>
+      <Project>{fa6faaea-07f3-4fff-8f73-a758ca4f0510}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Sync.Today\Sync.Today.fsproj">
+      <Name>Sync.Today</Name>
+      <Project>{baf2cd5a-2d48-4b5c-9935-2586c92ba49b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -190,6 +221,13 @@
       </ItemGroup>
     </When>
   </Choose>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+      <Paket>True</Paket>
+    </Reference>
+  </ItemGroup>
   <Choose>
     <When Condition="($(TargetFrameworkProfile) == 'Profile5') Or ($(TargetFrameworkProfile) == 'Profile6') Or ($(TargetFrameworkProfile) == 'Profile7') Or ($(TargetFrameworkProfile) == 'Profile14') Or ($(TargetFrameworkProfile) == 'Profile19') Or ($(TargetFrameworkProfile) == 'Profile24') Or ($(TargetFrameworkProfile) == 'Profile31') Or ($(TargetFrameworkProfile) == 'Profile32') Or ($(TargetFrameworkProfile) == 'Profile37') Or ($(TargetFrameworkProfile) == 'Profile42') Or ($(TargetFrameworkProfile) == 'Profile44') Or ($(TargetFrameworkProfile) == 'Profile47') Or ($(TargetFrameworkProfile) == 'Profile49') Or ($(TargetFrameworkProfile) == 'Profile78') Or ($(TargetFrameworkProfile) == 'Profile84') Or ($(TargetFrameworkProfile) == 'Profile92') Or ($(TargetFrameworkProfile) == 'Profile102') Or ($(TargetFrameworkProfile) == 'Profile111') Or ($(TargetFrameworkProfile) == 'Profile136') Or ($(TargetFrameworkProfile) == 'Profile147') Or ($(TargetFrameworkProfile) == 'Profile151') Or ($(TargetFrameworkProfile) == 'Profile157') Or ($(TargetFrameworkProfile) == 'Profile158') Or ($(TargetFrameworkProfile) == 'Profile225') Or ($(TargetFrameworkProfile) == 'Profile240') Or ($(TargetFrameworkProfile) == 'Profile255') Or ($(TargetFrameworkProfile) == 'Profile259') Or ($(TargetFrameworkProfile) == 'Profile328') Or ($(TargetFrameworkProfile) == 'Profile336') Or ($(TargetFrameworkProfile) == 'Profile344')">
       <ItemGroup>
@@ -201,56 +239,4 @@
       </ItemGroup>
     </When>
   </Choose>
-  <ItemGroup>
-    <Compile Include="Tests.fs" />
-    <None Include="paket.references" />
-    <Compile Include="TestIoC.fs" />
-    <Content Include="packages.config" />
-    <Content Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.core">
-      <HintPath>..\..\packages\NUnit.Runners\tools\lib\nunit.core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\..\packages\NUnit.Runners\tools\lib\nunit.core.interfaces.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.util">
-      <HintPath>..\..\packages\NUnit.Runners\tools\lib\nunit.util.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NUnit.VisualStudio.TestAdapter">
-      <HintPath>..\..\packages\NUnitTestAdapter\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-    <ProjectReference Include="..\..\src\Sync.Today.Core\Sync.Today.Core.fsproj">
-      <Name>Sync.Today.Core</Name>
-      <Project>{cb572253-9fe0-4a65-92ea-c992e5abf07b}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Sync.Today.Models\Sync.Today.Models.fsproj">
-      <Name>Sync.Today.Models</Name>
-      <Project>{fa6faaea-07f3-4fff-8f73-a758ca4f0510}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Sync.Today\Sync.Today.fsproj">
-      <Name>Sync.Today</Name>
-      <Project>{baf2cd5a-2d48-4b5c-9935-2586c92ba49b}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-      <Paket>True</Paket>
-    </Reference>
-  </ItemGroup>
 </Project>
