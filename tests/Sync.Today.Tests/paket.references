@@ -3,3 +3,4 @@ NUnit.Runners
 FSharp.Data
 Newtonsoft.Json
 log4net
+NUnitTestAdapter
