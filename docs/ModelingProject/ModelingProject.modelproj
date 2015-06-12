@@ -46,4 +46,6 @@
       <Project>{64536499-d7ca-46db-a530-6040a5a0247b}</Project>
     </ProjectReference>
   </ItemGroup>
+  <Target Name="Rebuild" Condition="!Exists('$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets')" >
+  </Target>
 </Project>
