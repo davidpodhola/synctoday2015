@@ -12,7 +12,7 @@ let linePageMatchExample line =
         0
 
 /// Example how page structure can look like
-let pageStructureExample firstLine pageNum =
+let pageStructureExample pageNum =
     "Date,Open,High,Low,Close,Volume,Adj Close"
 
 /// Take lines and divide it info several files based on line page matching
