@@ -1,7 +1,11 @@
 source https://nuget.org/api/v2
 
+nuget EntityFramework
 nuget FSharp.Data
 nuget FSharp.Formatting
+nuget Microsoft.Data.Edm
+nuget Microsoft.Data.OData
+nuget Microsoft.Data.Services
 nuget NUnit 
 nuget NUnit.Runners
 nuget FAKE
