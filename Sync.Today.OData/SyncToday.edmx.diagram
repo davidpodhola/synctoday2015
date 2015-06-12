@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d02c0ad219c7433387623f53b589a07a" Name="Diagram1">
+        <EntityTypeShape EntityType="DataModel.Accounts" Width="1.5" PointX="3" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.AdapterAppointments" Width="1.5" PointX="5.25" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Adapters" Width="1.5" PointX="5.75" PointY="44.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.AppointmentLevels" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Appointments" Width="1.5" PointX="3" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.CalDavEvents" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ConsumerAdapters" Width="1.5" PointX="8" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Consumers" Width="1.5" PointX="0.75" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.CustomerCategories" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Customers" Width="1.5" PointX="12.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ExchangeAppointments" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ExchangeContacts" Width="1.5" PointX="7.5" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ExchangeEmailMessages" Width="1.5" PointX="7.5" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.FloresActivities" Width="1.5" PointX="14.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.FloresFirms" Width="1.5" PointX="16.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.FloresPersons" Width="1.5" PointX="17.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.GoogleAddresses" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.GoogleContacts" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.GoogleEmails" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.GoogleGroupMemberships" Width="1.5" PointX="10" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.GoogleGroups" Width="1.5" PointX="7.75" PointY="47.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.GooglePhoneNumbers" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Journals" Width="1.5" PointX="14.75" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.OldAdapterAppointments" Width="1.5" PointX="8.25" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Processes" Width="1.5" PointX="15" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProductCategories" Width="1.5" PointX="9.75" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProductCategoryMemberships" Width="1.5" PointX="12" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Products" Width="1.5" PointX="9.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProductSoldToCustomers" Width="1.5" PointX="15" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ProductUsages" Width="1.5" PointX="12.75" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.ServiceAccounts" Width="1.5" PointX="5.25" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Services" Width="1.5" PointX="3" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataModel.Workflows" Width="1.5" PointX="12.75" PointY="11.375" IsExpanded="true" />
+        <AssociationConnector Association="DataModel.FK__Accounts__Consum__145C0A3F" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ServiceAc__Accou__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__AdapterAp__Adapt__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__AdapterAp__Appoi__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ConsumerA__Adapt__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__OldAdapte__Adapt__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__Appointme__Consu__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__OldAdapte__Appoi__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__CalDavEve__Servi__14270015" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ConsumerA__Consu__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__Customers__Custo__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProductSo__Custo__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ExchangeA__Servi__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ExchangeC__Servi__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ExchangeE__Servi__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__GoogleAdd__Conta__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__GoogleEma__Conta__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__GoogleGro__Conta__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__GooglePho__Conta__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__GoogleGro__Group__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__Processes__Workf__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProductCa__Produ__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProductCa__Produ__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProductSo__Produ__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ProductSo__Produ__10566F31" ManuallyRouted="false" />
+        <AssociationConnector Association="DataModel.FK__ServiceAc__Servi__173876EA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

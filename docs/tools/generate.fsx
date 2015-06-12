@@ -99,14 +99,13 @@ let libDirs =
 // Build API reference from XML comments
 let buildReference () =
   CleanDir (output @@ "reference")
-(*  
-  MetadataFormat.Generate
-    ( binaries, output @@ "reference", layoutRootsAll.["en"],
-      parameters = ("root", root)::info,
-      sourceRepo = githubLink @@ "tree/master",
-      sourceFolder = __SOURCE_DIRECTORY__ @@ ".." @@ "..",
-      publicOnly = true,libDirs = libDirs )
-*)
+  if File.Exists( """a:\Users\david.podhola\Source\Repos\synctoday2015r2\docs\tools\generate.fsx""" ) then
+      MetadataFormat.Generate
+        ( binaries, output @@ "reference", layoutRootsAll.["en"],
+          parameters = ("root", root)::info,
+          sourceRepo = githubLink @@ "tree/master",
+          sourceFolder = __SOURCE_DIRECTORY__ @@ ".." @@ "..",
+          publicOnly = true,libDirs = libDirs )
 
 // Build documentation from `fsx` and `md` files in `docs/content`
 let buildDocumentation () =

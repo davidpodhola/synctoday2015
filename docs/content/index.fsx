@@ -20,6 +20,14 @@ Documentation
   <div class="span1"></div>
 </div>
 
+## Library
+Sync.Today can be used as a library. Any consuming application can add the NuGet and
+start calling the methods.
+
+### Relational database management system
+An application can store data in Sync.Today and benefit from the automated data transfer
+to other systems.
+
 Example
 -------
 

@@ -1,6 +1,10 @@
-// Learn more about F# at http://fsharp.org. See the 'F# Tutorial' project
-// for more guidance on F# programming.
-
+(**
+# Sync.Today
+Some more documentation using `Markdown`.
+## Library
+Sync.Today can be used as a library. Any consuming application can add the NuGet and
+start calling 
+*)
 #load "Library.fs"
 open Sync.Today
 

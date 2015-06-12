@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7792bd69-f7a4-49ee-9e68-a4ac5fb7ea67" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="dd18f9bf-eeb9-4c83-b77b-21670391d0d5" name="Sync.Today">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="68420e10-1f27-4c6b-b0d0-6e325520856f" direction="Forward">
+          <layerMoniker Id="cfd161ba-db8a-40de-9949-f8e03d9da287" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="eaf9f492-e27b-4888-87d9-259974e799ec" name="Sync.Today">
+          <ArtifactNode Label="Sync.Today" Category="CodeSchema_Project" Id="(Assembly=../src/Sync.Today/Sync.Today.fsproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="cfd161ba-db8a-40de-9949-f8e03d9da287" name="Sync.Today.Core">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="df38e799-88f7-45a7-bbd8-16ad58509636" direction="Forward">
+          <layerMoniker Id="438590aa-88c0-455e-90fb-72d58aa397a0" />
+        </dependencyFromLayerToLayer>
+        <dependencyFromLayerToLayer Id="0d856d9e-9f42-4bf4-aa43-21c60af2b58d" direction="Forward">
+          <layerMoniker Id="b27a448d-cdd5-4d47-9350-8b0ed2ed2093" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="8102940b-f40c-41a1-9750-29a2485b7f68" name="Sync.Today.Core">
+          <ArtifactNode Label="Sync.Today.Core" Category="CodeSchema_Project" Id="(Assembly=../src/Sync.Today.Core/Sync.Today.Core.fsproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="438590aa-88c0-455e-90fb-72d58aa397a0" name="Sync.Today.Models">
+      <references>
+        <reference Id="4850758a-dd31-4b1e-8d79-9372a3d22c97" name="Sync.Today.Models">
+          <ArtifactNode Label="Sync.Today.Models" Category="CodeSchema_Project" Id="(Assembly=../src/Sync.Today.Models/Sync.Today.Models.fsproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="b27a448d-cdd5-4d47-9350-8b0ed2ed2093" name="Sync.Today.Repository">
+      <references>
+        <reference Id="fd1f57d5-e946-4188-8db7-be4d0008bfae" name="Sync.Today.Repository">
+          <ArtifactNode Label="Sync.Today.Repository" Category="CodeSchema_Project" Id="(Assembly=../src/Sync.Today.Repository/Sync.Today.Repository.fsproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="984b3534-e5a5-4d84-b266-d2202a2a77df" name="Sync.Today.Repository.SqlClient">
+      <dependencyToLayers>
+        <dependencyFromLayerToLayer Id="f5a29cf6-72af-4b85-b79d-3855eadb3edd" direction="Forward">
+          <layerMoniker Id="b27a448d-cdd5-4d47-9350-8b0ed2ed2093" />
+        </dependencyFromLayerToLayer>
+      </dependencyToLayers>
+      <references>
+        <reference Id="3ad9eaa9-ea0c-4f07-9ae2-a232b3a36b82" name="Sync.Today.Repository.SqlClient">
+          <ArtifactNode Label="Sync.Today.Repository.SqlClient" Category="CodeSchema_Project" Id="(Assembly=../../src/Sync.Today.Repository.SqlClient/Sync.Today.Repository.SqlClient.fsproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="253eeecf-5271-4e3f-b7a6-012ea1507e18" name="Sync.Today.OData">
+      <references>
+        <reference Id="d930e5a5-6458-4e49-a43b-37819223c0ce" name="Sync.Today.OData">
+          <ArtifactNode Label="Sync.Today.OData" Category="CodeSchema_Project" Id="(Assembly=../../Sync.Today.OData/Sync.Today.OData.csproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
+          <ExpandedNode Id="(Assembly=Sync.Today.OData)" Label="Sync.Today.OData.dll" Category="CodeSchema_Assembly">
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>

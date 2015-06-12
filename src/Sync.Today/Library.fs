@@ -1,7 +1,11 @@
 namespace Sync.Today
 
-/// Documentation for my library
+/// Sync.Today
 ///
+/// ## Library
+/// Sync.Today can be used as a library. Any consuming application can add the NuGet and
+/// start calling 
+/// 
 /// ## Example
 ///
 ///     let h = Library.hello 1
