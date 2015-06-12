@@ -9,7 +9,7 @@
       </dependencyToLayers>
       <references>
         <reference Id="eaf9f492-e27b-4888-87d9-259974e799ec" name="Sync.Today">
-          <ArtifactNode Label="Sync.Today" Category="CodeSchema_Project" Id="(Assembly=../src/Sync.Today/Sync.Today.fsproj)">
+          <ArtifactNode Label="Sync.Today" Category="CodeSchema_Project" Id="(Assembly=../../src/Sync.Today/Sync.Today.fsproj)">
             <Category Ref="File" />
           </ArtifactNode>
         </reference>
@@ -26,7 +26,7 @@
       </dependencyToLayers>
       <references>
         <reference Id="8102940b-f40c-41a1-9750-29a2485b7f68" name="Sync.Today.Core">
-          <ArtifactNode Label="Sync.Today.Core" Category="CodeSchema_Project" Id="(Assembly=../src/Sync.Today.Core/Sync.Today.Core.fsproj)">
+          <ArtifactNode Label="Sync.Today.Core" Category="CodeSchema_Project" Id="(Assembly=../../src/Sync.Today.Core/Sync.Today.Core.fsproj)">
             <Category Ref="File" />
           </ArtifactNode>
         </reference>
@@ -35,7 +35,7 @@
     <layer Id="438590aa-88c0-455e-90fb-72d58aa397a0" name="Sync.Today.Models">
       <references>
         <reference Id="4850758a-dd31-4b1e-8d79-9372a3d22c97" name="Sync.Today.Models">
-          <ArtifactNode Label="Sync.Today.Models" Category="CodeSchema_Project" Id="(Assembly=../src/Sync.Today.Models/Sync.Today.Models.fsproj)">
+          <ArtifactNode Label="Sync.Today.Models" Category="CodeSchema_Project" Id="(Assembly=../../src/Sync.Today.Models/Sync.Today.Models.fsproj)">
             <Category Ref="File" />
           </ArtifactNode>
         </reference>
@@ -44,7 +44,7 @@
     <layer Id="b27a448d-cdd5-4d47-9350-8b0ed2ed2093" name="Sync.Today.Repository">
       <references>
         <reference Id="fd1f57d5-e946-4188-8db7-be4d0008bfae" name="Sync.Today.Repository">
-          <ArtifactNode Label="Sync.Today.Repository" Category="CodeSchema_Project" Id="(Assembly=../src/Sync.Today.Repository/Sync.Today.Repository.fsproj)">
+          <ArtifactNode Label="Sync.Today.Repository" Category="CodeSchema_Project" Id="(Assembly=../../src/Sync.Today.Repository/Sync.Today.Repository.fsproj)">
             <Category Ref="File" />
           </ArtifactNode>
         </reference>
@@ -67,13 +67,22 @@
     <layer Id="253eeecf-5271-4e3f-b7a6-012ea1507e18" name="Sync.Today.OData">
       <references>
         <reference Id="d930e5a5-6458-4e49-a43b-37819223c0ce" name="Sync.Today.OData">
-          <ArtifactNode Label="Sync.Today.OData" Category="CodeSchema_Project" Id="(Assembly=../../Sync.Today.OData/Sync.Today.OData.csproj)">
+          <ArtifactNode Label="Sync.Today.OData" Category="CodeSchema_Project" Id="(Assembly=../../src/Sync.Today.OData/Sync.Today.OData.csproj)">
             <Category Ref="File" />
           </ArtifactNode>
           <ExpandedNode Id="(Assembly=Sync.Today.OData)" Label="Sync.Today.OData.dll" Category="CodeSchema_Assembly">
             <LinkCategory Ref="Produces" />
             <LinkCategory Ref="Represents" />
           </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+    <layer Id="9b9bde27-fc3f-4771-ba0f-461ff690b325" name="Sync.Today.IO.CSV">
+      <references>
+        <reference Id="955c7fc8-ab15-42e1-9851-b547a124b447" name="Sync.Today.IO.CSV">
+          <ArtifactNode Label="Sync.Today.IO.CSV" Category="CodeSchema_Project" Id="(Assembly=../../src/Sync.Today.IO.CSV/Sync.Today.IO.CSV.fsproj)">
+            <Category Ref="File" />
+          </ArtifactNode>
         </reference>
       </references>
     </layer>

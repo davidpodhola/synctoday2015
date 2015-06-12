@@ -47,7 +47,7 @@ Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject", "docs\Mod
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sync.Today.Repository.SqlClient", "src\Sync.Today.Repository.SqlClient\Sync.Today.Repository.SqlClient.fsproj", "{82EC746D-D122-4DC9-91C7-25C01632E186}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync.Today.OData", "Sync.Today.OData\Sync.Today.OData.csproj", "{64536499-D7CA-46DB-A530-6040A5A0247B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync.Today.OData", "src\Sync.Today.OData\Sync.Today.OData.csproj", "{64536499-D7CA-46DB-A530-6040A5A0247B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

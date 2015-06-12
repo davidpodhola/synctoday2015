@@ -76,19 +76,29 @@
       <Project>{cb572253-9fe0-4a65-92ea-c992e5abf07b}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Sync.Today.IO.CSV\Sync.Today.IO.CSV.fsproj">
+      <Name>Sync.Today.IO.CSV</Name>
+      <Project>{f192280a-b60a-4601-8d37-31b697ebcee7}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Sync.Today.Models\Sync.Today.Models.fsproj">
       <Name>Sync.Today.Models</Name>
       <Project>{fa6faaea-07f3-4fff-8f73-a758ca4f0510}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Sync.Today.Repository.SqlClient\Sync.Today.Repository.SqlClient.fsproj">
+      <Name>Sync.Today.Repository.SqlClient</Name>
+      <Project>{82ec746d-d122-4dc9-91c7-25c01632e186}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Sync.Today.Repository\Sync.Today.Repository.fsproj">
+      <Name>Sync.Today.Repository</Name>
+      <Project>{f743d309-be81-4469-a587-6d31b990dd99}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Sync.Today\Sync.Today.fsproj">
       <Name>Sync.Today</Name>
       <Project>{baf2cd5a-2d48-4b5c-9935-2586c92ba49b}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Sync.Today.IO.CSV\Sync.Today.IO.CSV.fsproj">
-      <Name>Sync.Today.IO.CSV</Name>
-      <Project>{f192280a-b60a-4601-8d37-31b697ebcee7}</Project>
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
