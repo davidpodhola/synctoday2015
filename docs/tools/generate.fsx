@@ -99,7 +99,7 @@ let libDirs =
 // Build API reference from XML comments
 let buildReference () =
   CleanDir (output @@ "reference")
-  if File.Exists( """a:\Users\david.podhola\Source\Repos\synctoday2015r2\docs\tools\generate.fsx""" ) then
+  if true then
       MetadataFormat.Generate
         ( binaries, output @@ "reference", layoutRootsAll.["en"],
           parameters = ("root", root)::info,
