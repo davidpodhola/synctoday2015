@@ -60,6 +60,7 @@
     <Compile Include="Tests.fs" />
     <None Include="paket.references" />
     <Compile Include="TestIoC.fs" />
+    <Compile Include="TestCSV.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

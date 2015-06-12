@@ -108,3 +108,12 @@ let optionstringIsEmpty a =
     match a with
     | Some r -> String.IsNullOrEmpty( r )
     | None -> true
+
+
+let createTemporaryFile =
+        let fileName = Path.GetTempFileName()
+
+        let fileInfo = new FileInfo(fileName)
+        fileInfo.Attributes <- FileAttributes.Temporary
+
+        fileName
