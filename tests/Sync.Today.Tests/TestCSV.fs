@@ -76,8 +76,8 @@ let ``dividing simple file with structure should result it just the file content
   let pageNum, lines = page1
   Assert.AreEqual( 0, pageNum )
   let linesA = Seq.toArray lines
-  Assert.AreEqual( 6, linesA.Length )
-  Assert.IsFalse( Seq.map2 (=) ( Array.toSeq fileContent_1 ) (lines) |> Seq.exists( fun p -> not p ) )
+  Assert.AreEqual( 5, linesA.Length )
+  Assert.IsFalse( Seq.map2 (=) ( Array.toSeq fileContent_1 ) lines |> Seq.exists( fun p -> not p ) )
 
 [<Test>]
 let ``dividing file by first char without structure should result divided lines with structure added`` () =

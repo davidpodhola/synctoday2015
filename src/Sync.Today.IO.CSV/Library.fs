@@ -17,5 +17,8 @@ let pageStructureExample pageNum =
 
 /// Take lines and divide it info several files based on line page matching
 /// Each page must start with the page structure definition line
-let divideFileIntoPages lines linePageMatch pageStructureExample =
-  lines |> Seq.groupBy (fun line -> linePageMatch line) |> Seq.map (fun (ix, sq) -> (ix, seq { yield pageStructureExample ix; yield! sq }))
+let divideFileIntoPages (lines:seq<string>) linePageMatch pageStructureExample =
+  lines |> Seq.groupBy (fun line -> linePageMatch line) |> Seq.map (fun (ix, sq) -> 
+    if sq |> Seq.take 1 |> Seq.exactlyOne = pageStructureExample ix then (ix, seq {yield! sq})
+    else (ix, seq { yield pageStructureExample ix; yield! sq })
+  )
