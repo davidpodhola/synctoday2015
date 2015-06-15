@@ -22,6 +22,11 @@ let fileContent_1 =
 
 
 let linePageMatch_2 line =
+//  match line with
+//    | [] -> 0
+//    | head::_ ->
+//      let (_, res) = Int32.TryParse head
+//      res
     let firstChar = ( ( line : string ).[0] ).ToString()
     let section = ref 0
     if Int32.TryParse( firstChar, section ) then
@@ -71,8 +76,8 @@ let ``dividing simple file with structure should result it just the file content
   let pageNum, lines = page1
   Assert.AreEqual( 0, pageNum )
   let linesA = Seq.toArray lines
-  Assert.AreEqual( 5, linesA.Length )
-  Assert.IsFalse( Seq.map2 (=) ( Array.toSeq fileContent_1 ) lines |> Seq.exists( fun p -> not p ) )
+  Assert.AreEqual( 6, linesA.Length )
+  Assert.IsFalse( Seq.map2 (=) ( Array.toSeq fileContent_1 ) (lines) |> Seq.exists( fun p -> not p ) )
 
 [<Test>]
 let ``dividing file by first char without structure should result divided lines with structure added`` () =
@@ -91,12 +96,14 @@ let ``dividing file by first char without structure should result divided lines 
   let pageNum, lines = page
   Assert.AreEqual( 0, pageNum )
   let linesA = Seq.toArray lines
-  Assert.AreEqual( 3, linesA.Length )
-  Assert.IsFalse( Seq.map2 (=) ( Array.toSeq fileContent_2_0 ) lines |> Seq.exists( fun p -> not p ) )
+  Assert.AreEqual( 4, linesA.Length )
+  Assert.AreEqual(pageStructure_2 0, linesA.[0] )
+  Assert.IsFalse( Seq.map2 (=) ( Array.toSeq fileContent_2_0 ) (lines |> Seq.skip 1) |> Seq.exists( fun p -> not p ) )
 
   let page = resultA.[1]
   let pageNum, lines = page
   Assert.AreEqual( 3, pageNum )
   let linesA = Seq.toArray lines
-  Assert.AreEqual( 4, linesA.Length )
-  Assert.IsFalse( Seq.map2 (=) ( Array.toSeq fileContent_2_3 ) lines |> Seq.exists( fun p -> not p ) )
+  Assert.AreEqual( 5, linesA.Length )
+  Assert.AreEqual(pageStructure_2 3, linesA.[0] )
+  Assert.IsFalse( Seq.map2 (=) ( Array.toSeq fileContent_2_3 ) (linesA |> Seq.skip 1) |> Seq.exists( fun p -> not p ) )
