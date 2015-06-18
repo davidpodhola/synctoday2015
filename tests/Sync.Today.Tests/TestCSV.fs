@@ -64,7 +64,7 @@ let fileContent_2 = Array.concat ( seq [ fileContent_2_0; fileContent_2_3; fileC
 
 [<Test>]
 let ``dividing simple file with structure should result it just the file content`` () =
-  let fileName = Common.createTemporaryFile
+  let fileName = Common.createTemporaryFile ()
   File.WriteAllLines( 
     fileName, fileContent_1
   )
@@ -81,7 +81,7 @@ let ``dividing simple file with structure should result it just the file content
 
 [<Test>]
 let ``dividing file by first char without structure should result divided lines with structure added`` () =
-  let fileName = Common.createTemporaryFile
+  let fileName = Common.createTemporaryFile ()
   File.WriteAllLines( 
     fileName, fileContent_2
   )

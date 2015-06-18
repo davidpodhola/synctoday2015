@@ -110,7 +110,7 @@ let optionstringIsEmpty a =
     | None -> true
 
 
-let createTemporaryFile =
+let createTemporaryFile () =
         let fileName = Path.GetTempFileName()
 
         let fileInfo = new FileInfo(fileName)
