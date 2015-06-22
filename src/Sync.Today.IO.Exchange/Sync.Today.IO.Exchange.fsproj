@@ -184,6 +184,7 @@
     <Compile Include="ExchangeEmailMessagesRepository.fs" />
     <None Include="GetNewContacts.sql" />
     <None Include="GetExchangeAppointments.sql" />
+    <None Include="SaveDLUPIssues.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

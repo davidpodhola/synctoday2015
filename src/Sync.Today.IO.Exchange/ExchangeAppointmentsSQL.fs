@@ -11,9 +11,10 @@ open FSharp.Data
 let logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 let standardAttrsVisiblyDifferentLogger = log4net.LogManager.GetLogger( "StandardAttrsVisiblyDifferent" )
 
-type GetExchangeAppointments = SqlCommandProvider<"GetExchangeAppointments.sql", ConnectionStringName>
+type GetExchangeAppointmentsQuery = SqlCommandProvider<"GetExchangeAppointments.sql", ConnectionStringName>
+type SaveDLUPIssuesQuery = SqlCommandProvider<"SaveDLUPIssues.sql", ConnectionStringName>
 
-let internal convert( r : GetExchangeAppointments.Record ) : ExchangeAppointmentDTO =
+let internal convert( r : GetExchangeAppointmentsQuery.Record ) : ExchangeAppointmentDTO =
     { Id = r.Id; InternalId = r.InternalId; ExternalId = r.ExternalId; Body = r.Body; Start = r.Start; End = r.End; LastModifiedTime = r.LastModifiedTime; Location = r.Location;
                     IsReminderSet = r.IsReminderSet; AppointmentState = r.AppointmentState; Subject = r.Subject; RequiredAttendeesJSON = r.RequiredAttendeesJSON;
                     ReminderMinutesBeforeStart = r.ReminderMinutesBeforeStart; Sensitivity = r.Sensitivity; RecurrenceJSON = r.RecurrenceJSON; ModifiedOccurrencesJSON = r.ModifiedOccurrencesJSON;
@@ -23,69 +24,21 @@ let internal convert( r : GetExchangeAppointments.Record ) : ExchangeAppointment
                     EndTimeZone = r.EndTimeZone; AllowNewTimeProposal = r.AllowNewTimeProposal; CategoriesJSON = r.CategoriesJSON; ServiceAccountId = r.ServiceAccountId; 
                     Tag = r.Tag }
 
-let internal convertOption( ro : GetExchangeAppointments.Record option) : ExchangeAppointmentDTO option = 
+let internal convertOption( ro : GetExchangeAppointmentsQuery.Record option) : ExchangeAppointmentDTO option = 
     match ro with
     | Some r -> Some(convert(r))
     | None -> None
 
 let exchangeAppointmentByInternalId internalId = 
-    ( new GetExchangeAppointments() ).AsyncExecute(0,internalId, null ) |> Async.RunSynchronously |> Seq.tryHead |> convertOption
+    ( new GetExchangeAppointmentsQuery() ).AsyncExecute(0,internalId, null ) |> Async.RunSynchronously |> Seq.tryHead |> convertOption
 
 let exchangeAppointments () = 
-    ( new GetExchangeAppointments() ).AsyncExecute(0,Guid.Empty, null ) |> Async.RunSynchronously |> Seq.map convert
+    ( new GetExchangeAppointmentsQuery() ).AsyncExecute(0,Guid.Empty, null ) |> Async.RunSynchronously |> Seq.map convert
 
-let private copyToExchangeAppointment(destination : SqlConnection.ServiceTypes.ExchangeAppointments, source : ExchangeAppointmentDTO ) =
-    destination.AllowNewTimeProposal <- source.AllowNewTimeProposal
-    destination.AppointmentState <- source.AppointmentState
-    destination.AppointmentType <- source.AppointmentType
-    destination.Body <- source.Body
-    destination.CategoriesJSON <- source.CategoriesJSON
-    destination.DeletedOccurrencesJSON <- source.DeletedOccurrencesJSON
-    destination.Duration <- source.Duration
-    destination.End <- source.End
-    destination.EndTimeZone <- source.EndTimeZone
-    destination.ExternalId <- source.ExternalId
-    destination.FirstOccurrenceJSON <- source.FirstOccurrenceJSON
-    destination.ICalRecurrenceId <- source.ICalRecurrenceId
-    if destination.Id = 0  then
-        destination.Id <- source.Id
-    destination.InternalId  <- source.InternalId
-    destination.IsCancelled <- source.IsCancelled
-    destination.IsRecurring <- source.IsRecurring
-    destination.IsReminderSet <- source.IsReminderSet
-    destination.LastModifiedTime <- source.LastModifiedTime
-    destination.LastOccurrenceJSON <- source.LastOccurrenceJSON
-    destination.Location <- source.Location
-    destination.ModifiedOccurrencesJSON <- source.ModifiedOccurrencesJSON
-    destination.RecurrenceJSON <- source.RecurrenceJSON
-    destination.ReminderMinutesBeforeStart <- source.ReminderMinutesBeforeStart
-    destination.RequiredAttendeesJSON <- source.RequiredAttendeesJSON
-    destination.Sensitivity <- source.Sensitivity
-    destination.ServiceAccountId <- source.ServiceAccountId
-    destination.Start <- source.Start
-    destination.StartTimeZone <- source.StartTimeZone
-    destination.Subject <- source.Subject
-    destination.Tag <- Nullable<int>(source.Tag)
 
 let saveDLUPIssues( externalId : string, lastDLError : string, lastUPError : string  ) = 
     devlog.Debug( ( sprintf "saveDLUPIssues: externalId:'%A', LastDLError:'%A', LastUPError:'%A'" externalId, lastDLError, lastUPError  ) )
-    let db = db()
-    let possibleApp = 
-        query {
-            for r in db.ExchangeAppointments do
-            where ( r.ExternalId = externalId )
-            select r
-        } |> Seq.tryHead
-    if ( possibleApp.IsNone ) then
-        let newApp = new SqlConnection.ServiceTypes.ExchangeAppointments()
-        newApp.ExternalId <- externalId
-        newApp.LastDLError <- lastDLError
-        newApp.LastUPError <- lastUPError
-        db.ExchangeAppointments.InsertOnSubmit newApp
-    else
-        if ( not ( String.IsNullOrWhiteSpace(lastDLError) ) ) then possibleApp.Value.LastDLError <- lastDLError
-        if ( not ( String.IsNullOrWhiteSpace(lastUPError) ) ) then possibleApp.Value.LastUPError <- lastUPError
-    db.DataContext.SubmitChanges()
+    ( new SaveDLUPIssuesQuery() ).AsyncExecute(lastDLError, lastUPError, externalId ) |> Async.RunSynchronously |> ignore
 
 let categories( r : ExchangeAppointmentDTO ) : string array =
     if optionstringIsEmpty r.CategoriesJSON then [| |] else unjson<string array>( r.CategoriesJSON.Value )
