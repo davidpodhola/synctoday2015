@@ -52,15 +52,15 @@ let normalize ( r : ExchangeAppointmentDTO ) : ExchangeAppointmentDTO =
         FirstOccurrenceJSON = r.FirstOccurrenceJSON; 
         DeletedOccurrencesJSON = r.DeletedOccurrencesJSON; AppointmentType = r.AppointmentType; Duration = r.Duration; StartTimeZone = r.StartTimeZone; 
         EndTimeZone = r.EndTimeZone; AllowNewTimeProposal = r.AllowNewTimeProposal; 
-        CategoriesJSON = json(Array.FindAll( categories(r), ( fun p -> not(optionstringIsEmpty p ) ) ) );
+        CategoriesJSON = Some(json(Array.FindAll( categories(r), ( fun p -> not(String.IsNullOrWhiteSpace( p ) ) ) ) ) );
         ServiceAccountId = r.ServiceAccountId; 
         Tag = r.Tag }
 
 let areStandardAttrsVisiblyDifferent( a1 : ExchangeAppointmentDTO, a2 : ExchangeAppointmentDTO ) : bool =
     let a1n = normalize( a1 )
     let a2n = normalize( a2 )
-    let result = not (( stringsAreEqual a1n.CategoriesJSON a2n.CategoriesJSON ) && 
-                    ( stringsAreEqual a1n.Location a2n.Location ) && ( stringsAreEqual a1n.Body a2n.Body ) && ( stringsAreEqual a1n.Subject a2n.Subject )
+    let result = not (( optionstringsAreEqual a1n.CategoriesJSON a2n.CategoriesJSON ) && 
+                    ( optionstringsAreEqual a1n.Location a2n.Location ) && ( optionstringsAreEqual a1n.Body a2n.Body ) && ( optionstringsAreEqual a1n.Subject a2n.Subject )
                     && ( a1n.Start = a2n.Start ) && ( a1n.End = a2n.End ) && ( a1n.ReminderMinutesBeforeStart = a2n.ReminderMinutesBeforeStart ) && 
                     ( a1n.IsReminderSet = a2n.IsReminderSet )
                     && ( a1n.Sensitivity = a2n.Sensitivity ))
