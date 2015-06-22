@@ -3,6 +3,7 @@ source https://nuget.org/api/v2
 nuget EWS-Api-2.0
 nuget EntityFramework
 nuget FSharp.Data
+nuget FSharp.Data.SqlClient
 nuget FSharp.Formatting
 nuget Microsoft.Data.Edm
 nuget Microsoft.Data.OData
