@@ -1,6 +1,10 @@
 ﻿module CSV
 
 open System
+open FSharp.Data
+
+type type1 = CsvProvider<"""..\..\docs\content\data\MSFT.csv""">
+type type2 = CsvProvider<"""..\..\docs\content\data\MSFT.csv""">
 
 /// Example how line page matching can look like
 let linePageMatchExample line =
@@ -22,3 +26,9 @@ let divideFileIntoPages (lines:seq<string>) linePageMatch pageStructureExample =
     if sq |> Seq.take 1 |> Seq.exactlyOne = pageStructureExample ix then (ix, seq {yield! sq})
     else (ix, seq { yield pageStructureExample ix; yield! sq })
   )
+
+let processFile =
+    Array.toSeq [| 
+        ( 0, type1.Load("http://ichart.finance.yahoo.com/table.csv?s=MSFT") );
+        ( 1, type2.Load("http://ichart.finance.yahoo.com/table.csv?s=MSFT") )
+    |]
