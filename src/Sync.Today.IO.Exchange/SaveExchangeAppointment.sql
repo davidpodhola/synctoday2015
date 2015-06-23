@@ -59,7 +59,7 @@ BEGIN TRAN
 
 UPDATE ExchangeAppointments
    SET --[InternalId] = <InternalId, uniqueidentifier,> NEVER!
-      ,[ExternalId] = @ExternalId
+      [ExternalId] = @ExternalId
       ,[Body] = @Body
       ,[Start] = @Start
       ,[End] = @End
@@ -97,7 +97,10 @@ UPDATE ExchangeAppointments
 		  OR ISNULL([End], '2015-01-01') <> ISNULL(@End, '2015-01-01')
 		  OR ISNULL(LastModified, '2015-01-01') <> ISNULL(@LastModified, '2015-01-01')
 		  OR ISNULL(Location, '') <> ISNULL(@Location, '')
-		  OR ISNULL(Summary, '') <> ISNULL(@Summary, '')
+		  OR ISNULL(IsReminderSet, 0 ) <> ISNULL(@IsReminderSet, 0 )
+		  OR ISNULL(AppointmentState, 0 ) <> ISNULL(@AppointmentState, 0 )
+		  OR ISNULL([Subject], '') <> ISNULL(@Subject, '')
+		  OR ISNULL([RequiredAttendeesJSON], '') <> ISNULL(@RequiredAttendeesJSON, '')
 		  OR ISNULL(CategoriesJSON, '') <> ISNULL(@CategoriesJSON, '')
 		  OR ISNULL(ServiceAccountId, 0) <> ISNULL(@ServiceAccountId, 0)
 		  OR ISNULL(Tag, 0) <> ISNULL(@Tag,0)
@@ -109,32 +112,85 @@ UPDATE ExchangeAppointments
 
 IF @@ROWCOUNT = 0
 BEGIN
-  INSERT CalDavEvents(
-	   InternalId
-      ,ExternalId
-      ,[Description]
-      ,Start
-      ,[End]
-      ,LastModified
-      ,Location
-      ,Summary
-      ,CategoriesJSON
-      ,ServiceAccountId
-      ,Upload
-      ,Tag
-      ,IsNew
-      ,WasJustUpdated
-      ,LastDLError
-      ,LastUPError
-		   ) 
-   SELECT @InternalId, @ExternalId, @Description, @Start, @End, @LastModified, @Location, @Summary, @CategoriesJSON, @ServiceAccountId,
-			@Upload, @Tag, 1, 0, @LastDLError, @LastUPError
+
+INSERT INTO [ExchangeAppointments]
+           ([InternalId]
+           ,[ExternalId]
+           ,[Body]
+           ,[Start]
+           ,[End]
+           ,[LastModifiedTime]
+           ,[Location]
+           ,[IsReminderSet]
+           ,[AppointmentState]
+           ,[Subject]
+           ,[RequiredAttendeesJSON]
+           ,[ReminderMinutesBeforeStart]
+           ,[Sensitivity]
+           ,[RecurrenceJSON]
+           ,[ModifiedOccurrencesJSON]
+           ,[LastOccurrenceJSON]
+           ,[IsRecurring]
+           ,[IsCancelled]
+           ,[ICalRecurrenceId]
+           ,[FirstOccurrenceJSON]
+           ,[DeletedOccurrencesJSON]
+           ,[AppointmentType]
+           ,[Duration]
+           ,[StartTimeZone]
+           ,[EndTimeZone]
+           ,[AllowNewTimeProposal]
+           ,[CategoriesJSON]
+           ,[ServiceAccountId]
+           ,[Upload]
+           ,[Tag]
+           ,[IsNew]
+           ,[WasJustUpdated]
+           ,[DownloadRound]
+           ,[LastDLError]
+           ,[LastUPError])
+
+   SELECT @InternalId
+           ,@ExternalId
+           ,@Body
+           ,@Start
+           ,@End
+           ,@LastModifiedTime
+           ,@Location
+           ,@IsReminderSet
+           ,@AppointmentState
+           ,@Subject
+           ,@RequiredAttendeesJSON
+           ,@ReminderMinutesBeforeStart
+           ,@Sensitivity
+           ,@RecurrenceJSON
+           ,@ModifiedOccurrencesJSON
+           ,@LastOccurrenceJSON
+           ,@IsRecurring
+           ,@IsCancelled
+           ,@ICalRecurrenceId
+           ,@FirstOccurrenceJSON
+           ,@DeletedOccurrencesJSON
+           ,@AppointmentType
+           ,@Duration
+           ,@StartTimeZone
+           ,@EndTimeZone
+           ,@AllowNewTimeProposal
+           ,@CategoriesJSON
+           ,@ServiceAccountId
+           ,@Upload
+           ,@Tag
+           ,1
+           ,0
+           ,@DownloadRound
+           ,@LastDLError
+           ,@LastUPError
 ;
   SELECT @id = SCOPE_IDENTITY()
 END
 
 COMMIT
 
-SELECT * FROM CalDavEvents
+SELECT * FROM ExchangeAppointments
 	WHERE Id = ISNULL(@id, -1) OR InternalId = ISNULL(@InternalId, 'ABDEB065-DFE0-4E4F-B504-F62841690930') OR ExternalId = ISNULL(@ExternalId, '{ABDEB065-DFE0-4E4F-B504-F62841690930}')
  

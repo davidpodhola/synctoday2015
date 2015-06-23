@@ -13,6 +13,7 @@ let standardAttrsVisiblyDifferentLogger = log4net.LogManager.GetLogger( "Standar
 
 type GetExchangeAppointmentsQuery = SqlCommandProvider<"GetExchangeAppointments.sql", ConnectionStringName>
 type SaveDLUPIssuesQuery = SqlCommandProvider<"SaveDLUPIssues.sql", ConnectionStringName>
+type SaveExchangeAppointmentsQuery = SqlCommandProvider<"SaveExchangeAppointment.sql", ConnectionStringName>
 
 let internal convert( r : GetExchangeAppointmentsQuery.Record ) : ExchangeAppointmentDTO =
     { Id = r.Id; InternalId = r.InternalId; ExternalId = r.ExternalId; Body = r.Body; Start = r.Start; End = r.End; LastModifiedTime = r.LastModifiedTime; Location = r.Location;
