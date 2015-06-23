@@ -6,8 +6,8 @@ DECLARE @InternalId uniqueidentifier
 select @InternalId  = @InternalIdVal
 DECLARE @ExternalId nvarchar(max)
 select @ExternalId  = @ExternalIdVal
-DECLARE @Description nvarchar(max)
-select @Description  = @DescriptionVal
+DECLARE @Body nvarchar(max)
+select @Body  = @BodyVal
 DECLARE @Start datetime
 select @Start  = @StartVal
 DECLARE @End datetime
@@ -57,10 +57,7 @@ declare @LastUPError nvarchar(max) = @LastUPErrorVal
 
 BEGIN TRAN
 
-USE [SyncToday2015.new]
-GO
-
-UPDATE [dbo].[ExchangeAppointments]
+UPDATE ExchangeAppointments
    SET --[InternalId] = <InternalId, uniqueidentifier,> NEVER!
       ,[ExternalId] = @ExternalId
       ,[Body] = @Body
@@ -92,32 +89,10 @@ UPDATE [dbo].[ExchangeAppointments]
       ,[Upload] = @Upload
       ,[Tag] = @Tag
       ,[IsNew] = @IsNew
-      ,[WasJustUpdated] = @WasJustUpdated
-      ,[DownloadRound] = @DownloadRound
-      ,[LastDLError] = @LastDLError
-      ,[LastUPError] = @LastUPError
- WHERE <Search Conditions,,>
-GO
-
-
-UPDATE CalDavEvents with (serializable) SET 
-	   --InternalId = @InternalId NO, we have ChangeInternalIdBecauseOfDuplicity for this
-      ExternalId = @ExternalId
-      ,[Description] = @Description
-      ,Start = @Start
-      ,[End] = @End
-      ,LastModified = @LastModified
-      ,Location = @Location
-      ,Summary = @Summary
-      ,CategoriesJSON = @CategoriesJSON
-      ,ServiceAccountId = @ServiceAccountId
-      ,Upload = @Upload
-      ,Tag = @Tag
-      ,IsNew = 0
-      ,WasJustUpdated = 
+      ,[WasJustUpdated] = 
 		( CASE WHEN 
 			ISNULL(ExternalId, '') <> ISNULL(@ExternalId, '')
-		  OR ISNULL([Description], '') <> ISNULL(@Description, '')
+		  OR ISNULL(Body, '') <> ISNULL(@Body, '')
 		  OR ISNULL(Start, '2015-01-01') <> ISNULL(@Start, '2015-01-01')
 		  OR ISNULL([End], '2015-01-01') <> ISNULL(@End, '2015-01-01')
 		  OR ISNULL(LastModified, '2015-01-01') <> ISNULL(@LastModified, '2015-01-01')
@@ -127,9 +102,10 @@ UPDATE CalDavEvents with (serializable) SET
 		  OR ISNULL(ServiceAccountId, 0) <> ISNULL(@ServiceAccountId, 0)
 		  OR ISNULL(Tag, 0) <> ISNULL(@Tag,0)
 		THEN 1 ELSE 0 END )
-      ,LastDLError = @LastDLError
-      ,LastUPError = @LastUPError
-	WHERE Id = ISNULL(@id, -1) OR InternalId = ISNULL(@InternalId, 'ABDEB065-DFE0-4E4F-B504-F62841690930') OR ExternalId = ISNULL(@ExternalId, '{ABDEB065-DFE0-4E4F-B504-F62841690930}')
+      ,[DownloadRound] = @DownloadRound
+      ,[LastDLError] = @LastDLError
+      ,[LastUPError] = @LastUPError
+ WHERE 	Id = ISNULL(@id, -1) OR InternalId = ISNULL(@InternalId, 'ABDEB065-DFE0-4E4F-B504-F62841690930') OR ExternalId = ISNULL(@ExternalId, '{ABDEB065-DFE0-4E4F-B504-F62841690930}')
 
 IF @@ROWCOUNT = 0
 BEGIN
