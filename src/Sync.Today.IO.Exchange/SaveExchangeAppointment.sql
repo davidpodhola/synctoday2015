@@ -1,21 +1,4 @@
 -- uncomment for testing
-/*  
-DECLARE @idVal int = 0
-DECLARE @InternalIdVal uniqueidentifier = '40995F91-6236-4E5F-B289-0967E18D1E67'
-DECLARE @ExternalIdVal nvarchar(2048) = NULL
-DECLARE @DescriptionVal nvarchar(max) = 'Our event description'
-DECLARE @StartVal datetime = '2015-05-05 10:35:42.213'
-DECLARE @EndVal datetime = '2015-05-05 10:36:42.213'
-DECLARE @LastModifiedVal datetime = '2015-05-05 10:36:42.213'
-DECLARE @LocationVal nvarchar(max) = 'Here'
-DECLARE @SummaryVal nvarchar(max) = 'Title635664189422126569'
-DECLARE @CategoriesJSONVal nvarchar(max) = NULL
-DECLARE @ServiceAccountIdVal int = 3
-DECLARE @UploadVal bit = 1
-DECLARE @TagVal int = 0
-DECLARE @LastDLErrorVal nvarchar(max) = NULL
-DECLARE @LastUPErrorVal nvarchar(max) = NULL
-*/
 
 DECLARE @id int
 select @id  = @idVal
@@ -67,6 +50,10 @@ declare @Duration int = @DurationVal
 declare @StartTimeZone nvarchar(max) = @StartTimeZoneVal
 declare @EndTimeZone nvarchar(max) = @EndTimeZoneVal
 declare @AllowNewTimeProposal bit = @AllowNewTimeProposalVal
+declare @CategoriesJSON nvarchar(max) = @CategoriesJSONVal
+declare @DownloadRound int = @DownloadRoundVal
+declare @LastDLError nvarchar(max) = @LastDLErrorVal
+declare @LastUPError nvarchar(max) = @LastUPErrorVal
 
 BEGIN TRAN
 
@@ -100,15 +87,15 @@ UPDATE [dbo].[ExchangeAppointments]
       ,[StartTimeZone] = @StartTimeZone
       ,[EndTimeZone] = @EndTimeZone
       ,[AllowNewTimeProposal] = @AllowNewTimeProposal
-      ,[CategoriesJSON] = @CategoriesJSON, nvarchar(max),>
-      ,[ServiceAccountId] = @ServiceAccountId, int,>
-      ,[Upload] = @Upload, bit,>
-      ,[Tag] = @Tag, int,>
-      ,[IsNew] = @IsNew, bit,>
-      ,[WasJustUpdated] = @WasJustUpdated, bit,>
-      ,[DownloadRound] = @DownloadRound, int,>
-      ,[LastDLError] = @LastDLError, nvarchar(max),>
-      ,[LastUPError] = @LastUPError, nvarchar(max),>
+      ,[CategoriesJSON] = @CategoriesJSON
+      ,[ServiceAccountId] = @ServiceAccountId
+      ,[Upload] = @Upload
+      ,[Tag] = @Tag
+      ,[IsNew] = @IsNew
+      ,[WasJustUpdated] = @WasJustUpdated
+      ,[DownloadRound] = @DownloadRound
+      ,[LastDLError] = @LastDLError
+      ,[LastUPError] = @LastUPError
  WHERE <Search Conditions,,>
 GO
 

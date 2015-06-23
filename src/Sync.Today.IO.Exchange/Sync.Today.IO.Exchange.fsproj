@@ -185,6 +185,7 @@
     <None Include="GetNewContacts.sql" />
     <None Include="GetExchangeAppointments.sql" />
     <None Include="SaveDLUPIssues.sql" />
+    <None Include="SaveExchangeAppointment.sql" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
