@@ -3,27 +3,27 @@
 DECLARE @idVal int = 0
 DECLARE @InternalIdVal uniqueidentifier = '40995F91-6236-4E5F-B289-0967E18D1E67'
 DECLARE @ExternalIdVal nvarchar(2048) = NULL
-DECLARE @DescriptionVal nvarchar(4000) = 'Our event description'
+DECLARE @DescriptionVal nvarchar(max) = 'Our event description'
 DECLARE @StartVal datetime = '2015-05-05 10:35:42.213'
 DECLARE @EndVal datetime = '2015-05-05 10:36:42.213'
 DECLARE @LastModifiedVal datetime = '2015-05-05 10:36:42.213'
-DECLARE @LocationVal nvarchar(4000) = 'Here'
-DECLARE @SummaryVal nvarchar(4000) = 'Title635664189422126569'
-DECLARE @CategoriesJSONVal nvarchar(4000) = NULL
+DECLARE @LocationVal nvarchar(max) = 'Here'
+DECLARE @SummaryVal nvarchar(max) = 'Title635664189422126569'
+DECLARE @CategoriesJSONVal nvarchar(max) = NULL
 DECLARE @ServiceAccountIdVal int = 3
 DECLARE @UploadVal bit = 1
 DECLARE @TagVal int = 0
-DECLARE @LastDLErrorVal nvarchar(4000) = NULL
-DECLARE @LastUPErrorVal nvarchar(4000) = NULL
+DECLARE @LastDLErrorVal nvarchar(max) = NULL
+DECLARE @LastUPErrorVal nvarchar(max) = NULL
 */
 
 DECLARE @id int
 select @id  = @idVal
 DECLARE @InternalId uniqueidentifier
 select @InternalId  = @InternalIdVal
-DECLARE @ExternalId nvarchar(2048)
+DECLARE @ExternalId nvarchar(max)
 select @ExternalId  = @ExternalIdVal
-DECLARE @Description nvarchar(4000)
+DECLARE @Description nvarchar(max)
 select @Description  = @DescriptionVal
 DECLARE @Start datetime
 select @Start  = @StartVal
@@ -31,11 +31,11 @@ DECLARE @End datetime
 select @End  = @EndVal
 DECLARE @LastModified datetime
 select @LastModified  = @LastModifiedVal
-DECLARE @Location nvarchar(4000)
+DECLARE @Location nvarchar(max)
 select @Location  = @LocationVal
-DECLARE @Summary nvarchar(4000)
+DECLARE @Summary nvarchar(max)
 select @Summary  = @SummaryVal
-DECLARE @CategoriesJSON nvarchar(4000)
+DECLARE @CategoriesJSON nvarchar(max)
 select @CategoriesJSON  = @CategoriesJSONVal
 DECLARE @ServiceAccountId int
 select @ServiceAccountId  = @ServiceAccountIdVal
@@ -43,10 +43,13 @@ DECLARE @Upload bit
 select @Upload  = @UploadVal
 DECLARE @Tag int
 select @Tag  = @TagVal
-DECLARE @LastDLError nvarchar(4000)
+DECLARE @LastDLError nvarchar(max)
 select @LastDLError  = @LastDLErrorVal
-DECLARE @LastUPError nvarchar(4000)
+DECLARE @LastUPError nvarchar(max)
 select @LastUPError  = @LastUPErrorVal
+DECLARE @IsReminderSet bit
+select @IsReminderSet  = @IsReminderSetVal
+DECLARE @AppointmentState tinyint
 
 BEGIN TRAN
 
@@ -54,41 +57,41 @@ USE [SyncToday2015.new]
 GO
 
 UPDATE [dbo].[ExchangeAppointments]
-   SET [InternalId] = <InternalId, uniqueidentifier,>
-      ,[ExternalId] = <ExternalId, nvarchar(2048),>
-      ,[Body] = <Body, nvarchar(max),>
-      ,[Start] = <Start, datetime,>
-      ,[End] = <End, datetime,>
-      ,[LastModifiedTime] = <LastModifiedTime, datetime,>
-      ,[Location] = <Location, nvarchar(max),>
-      ,[IsReminderSet] = <IsReminderSet, bit,>
-      ,[AppointmentState] = <AppointmentState, tinyint,>
-      ,[Subject] = <Subject, nvarchar(max),>
-      ,[RequiredAttendeesJSON] = <RequiredAttendeesJSON, nvarchar(max),>
-      ,[ReminderMinutesBeforeStart] = <ReminderMinutesBeforeStart, int,>
-      ,[Sensitivity] = <Sensitivity, tinyint,>
-      ,[RecurrenceJSON] = <RecurrenceJSON, nvarchar(max),>
-      ,[ModifiedOccurrencesJSON] = <ModifiedOccurrencesJSON, nvarchar(max),>
-      ,[LastOccurrenceJSON] = <LastOccurrenceJSON, nvarchar(max),>
-      ,[IsRecurring] = <IsRecurring, bit,>
-      ,[IsCancelled] = <IsCancelled, bit,>
-      ,[ICalRecurrenceId] = <ICalRecurrenceId, nvarchar(max),>
-      ,[FirstOccurrenceJSON] = <FirstOccurrenceJSON, nvarchar(max),>
-      ,[DeletedOccurrencesJSON] = <DeletedOccurrencesJSON, nvarchar(max),>
-      ,[AppointmentType] = <AppointmentType, tinyint,>
-      ,[Duration] = <Duration, int,>
-      ,[StartTimeZone] = <StartTimeZone, nvarchar(max),>
-      ,[EndTimeZone] = <EndTimeZone, nvarchar(max),>
-      ,[AllowNewTimeProposal] = <AllowNewTimeProposal, bit,>
-      ,[CategoriesJSON] = <CategoriesJSON, nvarchar(max),>
-      ,[ServiceAccountId] = <ServiceAccountId, int,>
-      ,[Upload] = <Upload, bit,>
-      ,[Tag] = <Tag, int,>
-      ,[IsNew] = <IsNew, bit,>
-      ,[WasJustUpdated] = <WasJustUpdated, bit,>
-      ,[DownloadRound] = <DownloadRound, int,>
-      ,[LastDLError] = <LastDLError, nvarchar(max),>
-      ,[LastUPError] = <LastUPError, nvarchar(max),>
+   SET --[InternalId] = <InternalId, uniqueidentifier,> NEVER!
+      ,[ExternalId] = @ExternalId
+      ,[Body] = @Body
+      ,[Start] = @Start
+      ,[End] = @End
+      ,[LastModifiedTime] = @LastModifiedTime
+      ,[Location] = @Location
+      ,[IsReminderSet] = @IsReminderSet
+      ,[AppointmentState] = @AppointmentState, tinyint,>
+      ,[Subject] = @Subject, nvarchar(max),>
+      ,[RequiredAttendeesJSON] = @RequiredAttendeesJSON, nvarchar(max),>
+      ,[ReminderMinutesBeforeStart] = @ReminderMinutesBeforeStart, int,>
+      ,[Sensitivity] = @Sensitivity, tinyint,>
+      ,[RecurrenceJSON] = @RecurrenceJSON, nvarchar(max),>
+      ,[ModifiedOccurrencesJSON] = @ModifiedOccurrencesJSON, nvarchar(max),>
+      ,[LastOccurrenceJSON] = @LastOccurrenceJSON, nvarchar(max),>
+      ,[IsRecurring] = @IsRecurring, bit,>
+      ,[IsCancelled] = @IsCancelled, bit,>
+      ,[ICalRecurrenceId] = @ICalRecurrenceId, nvarchar(max),>
+      ,[FirstOccurrenceJSON] = @FirstOccurrenceJSON, nvarchar(max),>
+      ,[DeletedOccurrencesJSON] = @DeletedOccurrencesJSON, nvarchar(max),>
+      ,[AppointmentType] = @AppointmentType, tinyint,>
+      ,[Duration] = @Duration, int,>
+      ,[StartTimeZone] = @StartTimeZone, nvarchar(max),>
+      ,[EndTimeZone] = @EndTimeZone, nvarchar(max),>
+      ,[AllowNewTimeProposal] = @AllowNewTimeProposal, bit,>
+      ,[CategoriesJSON] = @CategoriesJSON, nvarchar(max),>
+      ,[ServiceAccountId] = @ServiceAccountId, int,>
+      ,[Upload] = @Upload, bit,>
+      ,[Tag] = @Tag, int,>
+      ,[IsNew] = @IsNew, bit,>
+      ,[WasJustUpdated] = @WasJustUpdated, bit,>
+      ,[DownloadRound] = @DownloadRound, int,>
+      ,[LastDLError] = @LastDLError, nvarchar(max),>
+      ,[LastUPError] = @LastUPError, nvarchar(max),>
  WHERE <Search Conditions,,>
 GO
 
