@@ -50,6 +50,23 @@ select @LastUPError  = @LastUPErrorVal
 DECLARE @IsReminderSet bit
 select @IsReminderSet  = @IsReminderSetVal
 DECLARE @AppointmentState tinyint
+select @AppointmentState  = @AppointmentStateVal
+declare @RequiredAttendeesJSON nvarchar(max) = @RequiredAttendeesJSONVal
+declare @ReminderMinutesBeforeStart int = @ReminderMinutesBeforeStartVal
+declare @Sensitivity tinyint = @SensitivityVal
+declare @RecurrenceJSON nvarchar(max) = @RecurrenceJSONVal
+declare @ModifiedOccurrencesJSON nvarchar(max) = @ModifiedOccurrencesJSONVal
+declare @LastOccurrenceJSON nvarchar(max) = @LastOccurrenceJSONVal
+declare @IsRecurring bit = @IsRecurringVal
+declare @IsCancelled bit = @IsCancelledVal
+declare @ICalRecurrenceId nvarchar(max) = @ICalRecurrenceIdVal
+declare @FirstOccurrenceJSON nvarchar(max) = @FirstOccurrenceJSONVal
+declare @DeletedOccurrencesJSON nvarchar(max) = @DeletedOccurrencesJSONVal
+declare @AppointmentType tinyint = @AppointmentTypeVal
+declare @Duration int = @DurationVal
+declare @StartTimeZone nvarchar(max) = @StartTimeZoneVal
+declare @EndTimeZone nvarchar(max) = @EndTimeZoneVal
+declare @AllowNewTimeProposal bit = @AllowNewTimeProposalVal
 
 BEGIN TRAN
 
@@ -65,24 +82,24 @@ UPDATE [dbo].[ExchangeAppointments]
       ,[LastModifiedTime] = @LastModifiedTime
       ,[Location] = @Location
       ,[IsReminderSet] = @IsReminderSet
-      ,[AppointmentState] = @AppointmentState, tinyint,>
-      ,[Subject] = @Subject, nvarchar(max),>
-      ,[RequiredAttendeesJSON] = @RequiredAttendeesJSON, nvarchar(max),>
-      ,[ReminderMinutesBeforeStart] = @ReminderMinutesBeforeStart, int,>
-      ,[Sensitivity] = @Sensitivity, tinyint,>
-      ,[RecurrenceJSON] = @RecurrenceJSON, nvarchar(max),>
-      ,[ModifiedOccurrencesJSON] = @ModifiedOccurrencesJSON, nvarchar(max),>
-      ,[LastOccurrenceJSON] = @LastOccurrenceJSON, nvarchar(max),>
-      ,[IsRecurring] = @IsRecurring, bit,>
-      ,[IsCancelled] = @IsCancelled, bit,>
-      ,[ICalRecurrenceId] = @ICalRecurrenceId, nvarchar(max),>
-      ,[FirstOccurrenceJSON] = @FirstOccurrenceJSON, nvarchar(max),>
-      ,[DeletedOccurrencesJSON] = @DeletedOccurrencesJSON, nvarchar(max),>
-      ,[AppointmentType] = @AppointmentType, tinyint,>
-      ,[Duration] = @Duration, int,>
-      ,[StartTimeZone] = @StartTimeZone, nvarchar(max),>
-      ,[EndTimeZone] = @EndTimeZone, nvarchar(max),>
-      ,[AllowNewTimeProposal] = @AllowNewTimeProposal, bit,>
+      ,[AppointmentState] = @AppointmentState
+      ,[Subject] = @Subject
+      ,[RequiredAttendeesJSON] = @RequiredAttendeesJSON
+      ,[ReminderMinutesBeforeStart] = @ReminderMinutesBeforeStart
+      ,[Sensitivity] = @Sensitivity
+      ,[RecurrenceJSON] = @RecurrenceJSON
+      ,[ModifiedOccurrencesJSON] = @ModifiedOccurrencesJSON
+      ,[LastOccurrenceJSON] = @LastOccurrenceJSON
+      ,[IsRecurring] = @IsRecurring
+      ,[IsCancelled] = @IsCancelled
+      ,[ICalRecurrenceId] = @ICalRecurrenceId
+      ,[FirstOccurrenceJSON] = @FirstOccurrenceJSON
+      ,[DeletedOccurrencesJSON] = @DeletedOccurrencesJSON
+      ,[AppointmentType] = @AppointmentType
+      ,[Duration] = @Duration
+      ,[StartTimeZone] = @StartTimeZone
+      ,[EndTimeZone] = @EndTimeZone
+      ,[AllowNewTimeProposal] = @AllowNewTimeProposal
       ,[CategoriesJSON] = @CategoriesJSON, nvarchar(max),>
       ,[ServiceAccountId] = @ServiceAccountId, int,>
       ,[Upload] = @Upload, bit,>
