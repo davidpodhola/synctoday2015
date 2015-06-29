@@ -85,7 +85,7 @@ let equalByString f (x:'T) (y:obj) =
   (x, y) ||> equalIf (fun x y -> StringComparer.InvariantCulture.Equals(f x, f y))
 
 /// apply convert to an option or return None for None
-let convertOption(a, convert) =
+let convertOption convert a =
     match a with
     | Some r -> Some(convert(r))
     | None -> None
@@ -117,3 +117,6 @@ let createTemporaryFile () =
         fileInfo.Attributes <- FileAttributes.Temporary
 
         fileName
+
+let int2string p=
+    ( p : int ).ToString()

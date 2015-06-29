@@ -99,7 +99,7 @@ let libDirs =
 // Build API reference from XML comments
 let buildReference () =
   CleanDir (output @@ "reference")
-  if true then
+  if false then
       MetadataFormat.Generate
         ( binaries, output @@ "reference", layoutRootsAll.["en"],
           parameters = ("root", root)::info,
