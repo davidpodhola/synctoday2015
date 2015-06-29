@@ -52,6 +52,11 @@
     <Compile Include="AssemblyInfo.fs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sync.Today.Core.WF\Sync.Today.Core.WF.csproj">
+      <Name>Sync.Today.Core.WF</Name>
+      <Project>{b93a17a6-1c0a-46c1-b953-88c405cd2ac8}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Sync.Today.Core\Sync.Today.Core.fsproj">
       <Name>Sync.Today.Core</Name>
       <Project>{cb572253-9fe0-4a65-92ea-c992e5abf07b}</Project>

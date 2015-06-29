@@ -56,6 +56,41 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Content Include="app.config" />
+    <Compile Include="Library1.fs" />
+    <None Include="Script.fsx" />
+    <Compile Include="ExchangeCommon.fs" />
+    <Compile Include="Schemas.fs" />
+    <Compile Include="ExchangeAppointment.fs" />
+    <Compile Include="ExchangeContact.fs" />
+    <Compile Include="ExchangeEmailMessage.fs" />
+    <Compile Include="ExchangeAppointmentsSQL.fs" />
+    <Compile Include="ExchangeEmailMessagesSQL.fs" />
+    <Compile Include="ExchangeContactsSQL.fs" />
+    <Compile Include="ExchangeRepository.fs" />
+    <Compile Include="ExchangeContactsRepository.fs" />
+    <Compile Include="ExchangeEmailMessagesRepository.fs" />
+    <None Include="GetNewContacts.sql" />
+    <None Include="GetExchangeAppointments.sql" />
+    <None Include="SaveDLUPIssues.sql" />
+    <None Include="SaveExchangeAppointment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <ProjectReference Include="..\Sync.Today.Core\Sync.Today.Core.fsproj">
+      <Name>Sync.Today.Core</Name>
+      <Project>{cb572253-9fe0-4a65-92ea-c992e5abf07b}</Project>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="($(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v3.5' Or $(TargetFrameworkVersion) == 'v4.0' Or $(TargetFrameworkVersion) == 'v4.5' Or $(TargetFrameworkVersion) == 'v4.5.1' Or $(TargetFrameworkVersion) == 'v4.5.2' Or $(TargetFrameworkVersion) == 'v4.5.3' Or $(TargetFrameworkVersion) == 'v4.6')) Or ($(TargetFrameworkIdentifier) == 'MonoAndroid') Or ($(TargetFrameworkIdentifier) == 'MonoTouch')">
       <ItemGroup>
@@ -167,39 +202,4 @@
       </ItemGroup>
     </When>
   </Choose>
-  <ItemGroup>
-    <Content Include="app.config" />
-    <Compile Include="Library1.fs" />
-    <None Include="Script.fsx" />
-    <Compile Include="ExchangeCommon.fs" />
-    <Compile Include="Schemas.fs" />
-    <Compile Include="ExchangeAppointment.fs" />
-    <Compile Include="ExchangeContact.fs" />
-    <Compile Include="ExchangeEmailMessage.fs" />
-    <Compile Include="ExchangeAppointmentsSQL.fs" />
-    <Compile Include="ExchangeEmailMessagesSQL.fs" />
-    <Compile Include="ExchangeContactsSQL.fs" />
-    <Compile Include="ExchangeRepository.fs" />
-    <Compile Include="ExchangeContactsRepository.fs" />
-    <Compile Include="ExchangeEmailMessagesRepository.fs" />
-    <None Include="GetNewContacts.sql" />
-    <None Include="GetExchangeAppointments.sql" />
-    <None Include="SaveDLUPIssues.sql" />
-    <None Include="SaveExchangeAppointment.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core, Version=$(TargetFSharpCoreVersion), Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Numerics" />
-    <ProjectReference Include="..\Sync.Today.Core\Sync.Today.Core.fsproj">
-      <Name>Sync.Today.Core</Name>
-      <Project>{cb572253-9fe0-4a65-92ea-c992e5abf07b}</Project>
-      <Private>True</Private>
-    </ProjectReference>
-  </ItemGroup>
 </Project>
