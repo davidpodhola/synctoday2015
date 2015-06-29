@@ -12,6 +12,7 @@ nuget NUnit
 nuget NUnit.Runners
 nuget FAKE
 nuget Newtonsoft.Json
+nuget NuGet.CommandLine
 nuget SourceLink.Fake
 nuget log4net
 nuget sync.today.cipher

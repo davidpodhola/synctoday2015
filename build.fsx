@@ -38,7 +38,7 @@ let summary = "Sync.Today is a business processes automation platform. It is an 
 let description = "Sync.Today is a business processes automation platform. It is an application integration server. Exchanging business documents among different systems both within or across organizational boundaries Sync.Today integrates business processes."
 
 // List of author names (for NuGet package)
-let authors = [ "Update Author in build.fsx" ]
+let authors = [ "davidpodhola" ]
 
 // Tags for your project (for NuGet package)
 let tags = "Sync.Today is like an Instagram filter to your business data. It can enhance the information you already have in your information systems to bring you the greatest benefits."
