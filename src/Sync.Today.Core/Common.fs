@@ -120,3 +120,6 @@ let createTemporaryFile () =
 
 let int2string p=
     ( p : int ).ToString()
+
+let int642string p=
+    ( p : int64 ).ToString()
