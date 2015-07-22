@@ -1,5 +1,7 @@
 ﻿module ExchangeContactsSQL
 
+#if fixed
+
 open Common
 open System
 open System.Data
@@ -287,3 +289,4 @@ let changeInternalIdBecauseOfDuplicity( exchangeContact : ExchangeContactDTO, fo
     changeInternalIdBecauseOfDuplicitySimple( foundDuplicity.InternalId, exchangeContact.Id )
 #endif
 
+#endif 

@@ -7,6 +7,10 @@ declare @externalIdVal nvarchar(max) =  null --'AAMkAGJmMDFhMmE3LTU3YWEtNDNmNy1i
 declare @id int = @idVal
 declare @internalId uniqueidentifier = @internalIdVal
 declare @externalId nvarchar(max) = @externalIdVal
+declare @serviceAccountId int = @serviceAccountIdVal
+declare @upload int = @uploadVal
+declare @WasJustUpdated int = @WasJustUpdatedVal
+declare @IsNew int = @IsNewVal
 
 SELECT [Id]
       ,[InternalId]
@@ -49,4 +53,7 @@ SELECT [Id]
   Id = ( CASE WHEN @Id = 0 THEN Id ELSE @Id End )
   AND InternalId = ( CASE WHEN @InternalId = '00000000-0000-0000-0000-000000000000' THEN InternalId ELSE @InternalId End )
   AND ExternalId = ISNULL(@ExternalId, ExternalId)
-
+  AND [ServiceAccountId] = ( CASE WHEN @serviceAccountId = 0 THEN Id ELSE @serviceAccountId End )
+  AND [Upload] = ( CASE WHEN @upload = -1 THEN [Upload] ELSE @upload End )
+  AND [WasJustUpdated] = ( CASE WHEN @WasJustUpdated = -1 THEN [WasJustUpdated] ELSE @WasJustUpdated End )
+  AND [IsNew] = ( CASE WHEN @IsNew = -1 THEN [IsNew] ELSE @IsNew End )

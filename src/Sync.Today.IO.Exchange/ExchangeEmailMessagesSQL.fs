@@ -1,5 +1,6 @@
 ﻿module ExchangeEmailMessagesSQL
 
+#if fixed
 open Common
 open System
 open System.Data
@@ -229,3 +230,4 @@ let changeInternalIdBecauseOfDuplicity( exchangeEmailMessage : ExchangeEmailMess
     changeInternalIdBecauseOfDuplicitySimple( foundDuplicity.InternalId, exchangeEmailMessage.Id )
 #endif
 
+#endif

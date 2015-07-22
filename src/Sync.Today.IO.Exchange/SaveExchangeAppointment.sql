@@ -16,8 +16,6 @@ DECLARE @LastModified datetime
 select @LastModified  = @LastModifiedVal
 DECLARE @Location nvarchar(max)
 select @Location  = @LocationVal
-DECLARE @Summary nvarchar(max)
-select @Summary  = @SummaryVal
 DECLARE @CategoriesJSON nvarchar(max)
 select @CategoriesJSON  = @CategoriesJSONVal
 DECLARE @ServiceAccountId int
@@ -50,10 +48,9 @@ declare @Duration int = @DurationVal
 declare @StartTimeZone nvarchar(max) = @StartTimeZoneVal
 declare @EndTimeZone nvarchar(max) = @EndTimeZoneVal
 declare @AllowNewTimeProposal bit = @AllowNewTimeProposalVal
-declare @CategoriesJSON nvarchar(max) = @CategoriesJSONVal
 declare @DownloadRound int = @DownloadRoundVal
-declare @LastDLError nvarchar(max) = @LastDLErrorVal
-declare @LastUPError nvarchar(max) = @LastUPErrorVal
+DECLARE @Subject nvarchar(max)
+select @Subject  = @SubjectVal
 
 BEGIN TRAN
 
@@ -63,7 +60,7 @@ UPDATE ExchangeAppointments
       ,[Body] = @Body
       ,[Start] = @Start
       ,[End] = @End
-      ,[LastModifiedTime] = @LastModifiedTime
+      ,[LastModifiedTime] = @LastModified
       ,[Location] = @Location
       ,[IsReminderSet] = @IsReminderSet
       ,[AppointmentState] = @AppointmentState
@@ -87,15 +84,15 @@ UPDATE ExchangeAppointments
       ,[CategoriesJSON] = @CategoriesJSON
       ,[ServiceAccountId] = @ServiceAccountId
       ,[Upload] = @Upload
-      ,[Tag] = @Tag
-      ,[IsNew] = @IsNew
+      ,[Tag] = ( case when @Tag = -1 then null else @Tag end )
+      ,[IsNew] = 0
       ,[WasJustUpdated] = 
 		( CASE WHEN 
 			ISNULL(ExternalId, '') <> ISNULL(@ExternalId, '')
 		  OR ISNULL(Body, '') <> ISNULL(@Body, '')
 		  OR ISNULL(Start, '2015-01-01') <> ISNULL(@Start, '2015-01-01')
 		  OR ISNULL([End], '2015-01-01') <> ISNULL(@End, '2015-01-01')
-		  OR ISNULL(LastModified, '2015-01-01') <> ISNULL(@LastModified, '2015-01-01')
+		  OR ISNULL(LastModifiedTime, '2015-01-01') <> ISNULL(@LastModified, '2015-01-01')
 		  OR ISNULL(Location, '') <> ISNULL(@Location, '')
 		  OR ISNULL(IsReminderSet, 0 ) <> ISNULL(@IsReminderSet, 0 )
 		  OR ISNULL(AppointmentState, 0 ) <> ISNULL(@AppointmentState, 0 )
@@ -155,7 +152,7 @@ INSERT INTO [ExchangeAppointments]
            ,@Body
            ,@Start
            ,@End
-           ,@LastModifiedTime
+           ,@LastModified
            ,@Location
            ,@IsReminderSet
            ,@AppointmentState
@@ -179,7 +176,7 @@ INSERT INTO [ExchangeAppointments]
            ,@CategoriesJSON
            ,@ServiceAccountId
            ,@Upload
-           ,@Tag
+           ,( case when @Tag = -1 then null else @Tag end )
            ,1
            ,0
            ,@DownloadRound

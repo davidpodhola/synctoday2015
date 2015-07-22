@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync.Today.OData", "src\Syn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync.Today.Core.WF", "src\Sync.Today.Core.WF\Sync.Today.Core.WF.csproj", "{B93A17A6-1C0A-46C1-B953-88C405CD2AC8}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sync.Today.IO.Exchange", "src\Sync.Today.IO.Exchange\Sync.Today.IO.Exchange.fsproj", "{D2ACD1F2-38FC-495F-90E0-CCEB16ED56BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{B93A17A6-1C0A-46C1-B953-88C405CD2AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B93A17A6-1C0A-46C1-B953-88C405CD2AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B93A17A6-1C0A-46C1-B953-88C405CD2AC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2ACD1F2-38FC-495F-90E0-CCEB16ED56BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2ACD1F2-38FC-495F-90E0-CCEB16ED56BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2ACD1F2-38FC-495F-90E0-CCEB16ED56BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2ACD1F2-38FC-495F-90E0-CCEB16ED56BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

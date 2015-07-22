@@ -1,0 +1,1 @@
+UPDATE ExchangeAppointments SET IsNew=0, WasJustUpdated=0 WHERE ServiceAccountId = @ServiceAccountId

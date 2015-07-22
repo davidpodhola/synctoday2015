@@ -1,5 +1,7 @@
 ﻿module ExchangeContactsRepository
 
+#if fixed
+
 open System
 open Microsoft.Exchange.WebServices.Data
 open System.Configuration
@@ -358,3 +360,4 @@ let UploadForServiceAccount( serviceAccount : ServiceAccountDTO ) =
 let Upload( serviceAccount : ServiceAccountDTO ) =
     ServiceAccountRepository.Upload( serviceAccount, UploadForServiceAccount )
 
+#endif

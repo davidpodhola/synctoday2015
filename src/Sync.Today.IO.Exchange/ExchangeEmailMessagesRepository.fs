@@ -1,5 +1,7 @@
 ﻿module ExchangeEmailMessagesRepository
 
+#if fixed
+
 open System
 open Microsoft.Exchange.WebServices.Data
 open System.Configuration
@@ -234,3 +236,4 @@ let ExchangeEmailMessageInternalIds() =
 let ExchangeEmailMessageByInternalId( internalId : Guid ) =
     exchangeEmailMessageByInternalId( internalId )
 
+#endif 
