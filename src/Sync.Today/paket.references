@@ -1,2 +1,3 @@
 log4net
 NuGet.CommandLine
+System.Management.Automation

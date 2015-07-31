@@ -14,6 +14,7 @@ nuget FAKE
 nuget Newtonsoft.Json
 nuget NuGet.CommandLine
 nuget SourceLink.Fake
+nuget System.Management.Automation
 nuget log4net
 nuget sync.today.cipher
 
