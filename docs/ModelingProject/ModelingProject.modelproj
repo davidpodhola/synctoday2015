@@ -40,12 +40,6 @@
       <DependentUpon>LayerDiagram.layerdiagram</DependentUpon>
     </Validate>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Sync.Today.OData\Sync.Today.OData.csproj">
-      <Name>Sync.Today.OData</Name>
-      <Project>{64536499-d7ca-46db-a530-6040a5a0247b}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <Target Name="Rebuild" Condition="!Exists('$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets')" >
+  <Target Name="Rebuild" Condition="!Exists('$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets')">
   </Target>
 </Project>
