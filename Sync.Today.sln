@@ -49,8 +49,6 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sync.Today.Repository.SqlCl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync.Today.OData", "src\Sync.Today.OData\Sync.Today.OData.csproj", "{64536499-D7CA-46DB-A530-6040A5A0247B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync.Today.Core.WF", "src\Sync.Today.Core.WF\Sync.Today.Core.WF.csproj", "{B93A17A6-1C0A-46C1-B953-88C405CD2AC8}"
-EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Sync.Today.Calendar", "src\Sync.Today.Calendar\Sync.Today.Calendar.fsproj", "{103BB4D4-5418-453F-92BC-3EFE6B0ACE10}"
 EndProject
 Global
@@ -95,10 +93,6 @@ Global
 		{64536499-D7CA-46DB-A530-6040A5A0247B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64536499-D7CA-46DB-A530-6040A5A0247B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64536499-D7CA-46DB-A530-6040A5A0247B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B93A17A6-1C0A-46C1-B953-88C405CD2AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B93A17A6-1C0A-46C1-B953-88C405CD2AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B93A17A6-1C0A-46C1-B953-88C405CD2AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B93A17A6-1C0A-46C1-B953-88C405CD2AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{103BB4D4-5418-453F-92BC-3EFE6B0ACE10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{103BB4D4-5418-453F-92BC-3EFE6B0ACE10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{103BB4D4-5418-453F-92BC-3EFE6B0ACE10}.Release|Any CPU.ActiveCfg = Release|Any CPU
