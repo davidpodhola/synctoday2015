@@ -45,11 +45,14 @@
     <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.fs" />
     <Compile Include="Library.fs" />
     <None Include="Script.fsx" />
     <None Include="paket.references" />
     <None Include="paket.template" />
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="Admin.fs" />
+    <Compile Include="Management.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sync.Today.Core\Sync.Today.Core.fsproj">
