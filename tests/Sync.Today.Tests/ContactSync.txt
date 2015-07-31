@@ -1,0 +1,9 @@
+﻿Connect using technical account
+Get technical account
+Download contacts
+For each nontechnical account
+	Download contacts
+	Find all contacts that belong to technical account and do not exist in non technical account
+	Copy all contacts to the non technical account
+	Upload contacts
+
